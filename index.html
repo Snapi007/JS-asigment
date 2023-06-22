@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kalkulator</title>
+  <script>
+    function izracunaj() {
+      // Preuzimanje unetih vrednosti iz modala
+      var prviBroj = parseFloat(document.getElementById("prviBroj").value);
+      var operacija = document.getElementById("operacija").value;
+      var drugiBroj = parseFloat(document.getElementById("drugiBroj").value);
+
+      var rezultat;
+
+      // Detekcija operacije i izvršavanje računanja
+      if (operacija === "+") {
+        rezultat = prviBroj + drugiBroj;
+      } else if (operacija === "-") {
+        rezultat = prviBroj - drugiBroj;
+      } else if (operacija === "*") {
+        rezultat = prviBroj * drugiBroj;
+      } else if (operacija === "/") {
+        rezultat = prviBroj / drugiBroj;
+      }
+    
+          // Prikazivanje rezultata u HTML dokumentu
+          if (rezultat !== undefined) {
+        document.getElementById("rezultat").innerHTML = "Rezultat: " + rezultat;
+      } else {
+        // Prikazivanje poruke o grešci ako operacija nije podržana
+        document.getElementById("rezultat").innerHTML = "Nevažeća operacija.";
+      }
+  
+    }
+  </script>
+</head>
+<body>
+  <h1>Kalkulator</h1>
+  <button onclick="document.getElementById('myModal').style.display='block'">Unesi vrednosti</button>
+
+  <!-- Modal za unos vrednosti -->
+  <div id="myModal" style="display:none">
+    <input type="number" id="prviBroj" placeholder="Unesite prvi broj">
+    <input type="text" id="operacija" placeholder="Unesite operaciju (+, -, *, /)">
+    <input type="number" id="drugiBroj" placeholder="Unesite drugi broj">
+    <button onclick="izracunaj()">Izračunaj</button>
+  </div>
+
+  <!-- Prikaz rezultata -->
+  <div id="rezultat"></div>
+</body>
+</html>
+
